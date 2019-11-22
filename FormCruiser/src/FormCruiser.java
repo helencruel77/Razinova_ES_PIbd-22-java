@@ -1,5 +1,4 @@
 
-
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -17,7 +16,7 @@ public class FormCruiser {
 
 	private JFrame frame;
 	private JPanel panel;
-	private Cruiser cruiser;
+	private ITransport warship;
 	
 	/**
 	 * Launch the application.
@@ -51,31 +50,28 @@ public class FormCruiser {
 		frame.setBounds(100, 100, 900, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		 Random rnd = new Random();
-         cruiser = new Cruiser(100, 1000, Color.BLACK, Color.GRAY, true, true);
-         cruiser.SetPosition(100,100, 550, 400);
 		
-		JButton buttonCreate = new JButton("\u0441\u043E\u0437\u0434\u0430\u0442\u044C");
-		buttonCreate.addActionListener(new ActionListener() {
+		JButton buttonCreateWarship = new JButton("\u0441\u043E\u0437\u0434\u0430\u0442\u044C \u0432\u043E\u0435\u043D\u043D\u044B\u0439 \u043A\u043E\u0440\u0430\u0431\u043B\u044C");
+		buttonCreateWarship.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Random rnd = new Random();
-				cruiser = new Cruiser(rnd.nextInt(30)+20, rnd.nextInt(60)+140, 
-		                Color.black, Color.gray, true, true);				
-				panel = new PanelCruiser(cruiser);
+				warship = new Warship(rnd.nextInt(30)+20, rnd.nextInt(60)+140, Color.black);				
+				panel = new PanelCruiser(warship);
 				panel.setBounds(10, 10, 900, 500);
 				frame.getContentPane().add(panel);
-				cruiser.SetPosition(rnd.nextInt(50)+50, rnd.nextInt(50)+50, 
-		                panel.getWidth(), panel.getHeight());				
+				warship.SetPosition(rnd.nextInt(50)+50, rnd.nextInt(50)+50, 
+				panel.getWidth(), panel.getHeight());				
 				panel.repaint();
 			}
 		});
-		buttonCreate.setBounds(10, 11, 89, 23);
-		frame.getContentPane().add(buttonCreate);
+		buttonCreateWarship.setBounds(10, 11, 216, 23);
+		frame.getContentPane().add(buttonCreateWarship);
 		
 		JButton buttonUp = new JButton("");
 		buttonUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cruiser.MoveTransport(Direction.Up);
+				
+				warship.MoveTransport(Direction.Up);
 				panel.repaint();
 			}
 		});
@@ -86,7 +82,7 @@ public class FormCruiser {
 		JButton btnRight = new JButton("");
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cruiser.MoveTransport(Direction.Right);
+				warship.MoveTransport(Direction.Right);
 				panel.repaint();
 			}
 		});
@@ -97,7 +93,7 @@ public class FormCruiser {
 		JButton buttonDown = new JButton("");
 		buttonDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cruiser.MoveTransport(Direction.Down);
+				warship.MoveTransport(Direction.Down);
 				panel.repaint();
 			}
 		});
@@ -108,12 +104,30 @@ public class FormCruiser {
 		JButton buttonLeft = new JButton("");
 		buttonLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cruiser.MoveTransport(Direction.Left);
+				warship.MoveTransport(Direction.Left);
 				panel.repaint();
 			}
 		});
 		buttonLeft.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		buttonLeft.setBounds(737, 372, 40, 40);
 		frame.getContentPane().add(buttonLeft);
+		
+		JButton button = new JButton("\u0441\u043E\u0437\u0434\u0430\u0442\u044C \u043A\u0440\u0435\u0439\u0441\u0435\u0440");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Random rnd = new Random();
+				warship = new Cruiser(rnd.nextInt(30)+20, rnd.nextInt(60)+140,
+						Color.black, Color.gray, true, true);				
+				panel = new PanelCruiser(warship);
+				panel.setBounds(10, 10, 900, 500);
+				frame.getContentPane().add(panel);
+				warship.SetPosition(rnd.nextInt(50)+50, rnd.nextInt(50)+50, 
+		                panel.getWidth(), panel.getHeight());				
+				panel.repaint();
+			}
+		});
+		button.setBounds(236, 11, 173, 23);
+		frame.getContentPane().add(button);
 	}
 }
