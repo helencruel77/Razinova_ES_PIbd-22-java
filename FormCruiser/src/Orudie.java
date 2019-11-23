@@ -1,5 +1,4 @@
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -21,7 +20,7 @@ public class Orudie {
      		case Two:
             	Dva(g);
             	break;
-     		case Three:
+ 			case Three:
      			Tri(g);
      			break;
 	     }
@@ -33,6 +32,7 @@ public class Orudie {
         g.setColor(Color.red);
         g.fillRect(Cruiser._startPosX + 70, Cruiser._startPosY + 15, 15, 3);
     }
+	
     public static void Dva (Graphics g) {
     	 Odin(g);
          g.setColor(Cruiser.DopColor);
@@ -40,6 +40,7 @@ public class Orudie {
          g.setColor(Color.red);
          g.fillRect( Cruiser._startPosX - 10, Cruiser._startPosY + 25, 11, 3);
     }
+    
     public static void Tri (Graphics g) {
     	Dva(g);
         g.setColor(Cruiser.DopColor);
