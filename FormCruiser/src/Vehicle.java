@@ -1,40 +1,32 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Set;
 
 public abstract class Vehicle implements ITransport {
-	protected static int _startPosX;
-    protected static int _startPosY;
-    protected int _pictureWidth;
-    protected int _pictureHeight;
-    protected int MaxSpeed;
-    protected int Weight;
-    protected static Color MainColor;
-    protected static Color DopColor;
-    public int getMaxSpeed() {
-		return MaxSpeed;
+	int _startPosX;
+	int _startPosY;
+	protected  int _pictureWidth;
+	protected int _pictureHeight;
+	private int locoWidth = 100;
+	private int locoHeight = 60;
+	public int MaxSpeed; {  Set get;}
+	public float Weight; { Set get;}
+	public Color MainColor;  
+	public Color DopColor; 
+	public int StartPosX() {
+		return _startPosX;
 	}
-	protected void setMaxSpeed(int MaxSpeed) {
-		this.MaxSpeed = MaxSpeed;
+	public int StartPosY() {
+		return _startPosY;
 	}
-	public int getWeight() {
-		return Weight;
-	}
-	protected void setWeight(float weight2) {
-		this.Weight = (int) weight2;
-	}
-	public Color getMainColor() {
+	public Color MainColor() {
 		return MainColor;
 	}
-	protected void setMainColor(Color MainColor) {
-		this.MainColor = MainColor;
-	}
-	public Color getDopColor() {
+	public Color DopColor() {
 		return DopColor;
 	}
-	protected void setDopColor(Color dopColor) {
-		this.DopColor = dopColor;
-	}
+	
 	public void SetPosition(int x, int y, int width, int height)
     {
         _startPosX = x;

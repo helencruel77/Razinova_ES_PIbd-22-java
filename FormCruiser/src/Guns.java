@@ -3,5 +3,6 @@ enum Guns
 {
     One,
     Two,
-    Three;
+    Three,
+    Four;
 }

@@ -15,21 +15,7 @@ public class Cruiser extends Warship{
     	super(maxSpeed, weight, mainColor);
         Rocket = rocket;
         Flag = flag;
-        Random rnd = new Random();
-        switch (rnd.nextInt(4)+1) {
-		case 1:
-			orudie = new DvaCircle();
-			break;
-		case 2:
-			orudie = new TriCircle();
-			break;
-		case 3:
-			orudie = new DvaTower();
-			break;
-		case 4:
-			orudie = new TriTower();
-			break;
-		}
+        DopColor = dopColor;
     }
    
     public void SetPosition(int x, int y, int width, int height)
@@ -43,13 +29,13 @@ public class Cruiser extends Warship{
     
 	public void DrawWarship(Graphics g) {
 		
-		orudie.KolOrudie(direction, g, Color.BLACK, Color.GRAY);
+		
 		super.DrawWarship(g);
 	    if (Rocket)
         {
-        	g.setColor(DopColor);
+        	g.setColor(MainColor);
         	g.fillRect( _startPosX+30, _startPosY + 45, 3, 10);
-        	g.setColor(Color.DARK_GRAY);
+        	g.setColor(DopColor);
         	g.fillOval( _startPosX+15, _startPosY + 53, 35, 5);
         	g.fillOval( _startPosX+45, _startPosY + 53, 5, 5);
         	g.setColor(Color.RED);
