@@ -84,7 +84,6 @@ public class FormDoki {
 					paneldoki.repaint();
 				
 				}
-				
 			}
 		});
 		frame.getContentPane().setLayout(null);
@@ -121,7 +120,6 @@ public class FormDoki {
 			}
 		});
 		frame.getContentPane().add(buttonCruiser);
-		
 		
 		
 		textField = new JTextField();

@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.Set;
 
 public class Cruiser extends Warship{
-	private Guns direction;
     private boolean Rocket;
     private boolean Flag;
     private IOrudie orudie;
@@ -26,9 +25,7 @@ public class Cruiser extends Warship{
         _pictureHeight = height;
     }
     
-    
 	public void DrawWarship(Graphics g) {
-		
 		
 		super.DrawWarship(g);
 	    if (Rocket)

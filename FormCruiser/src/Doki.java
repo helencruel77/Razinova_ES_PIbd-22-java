@@ -55,15 +55,11 @@ public class Doki<T extends ITransport, W extends IOrudie> {
 	}
 	
 	public boolean more(Doki<ITransport, IOrudie> value) {
-    	if (placesOrudie.length > value.placesOrudie.length)
-    		return true;
-    	return false;
+    		return placesOrudie.length > value.placesOrudie.length;
     }
     
     public boolean less(Doki<ITransport, IOrudie> value) {
-    	if (placesOrudie.length < value.placesOrudie.length)
-    		return true;
-    	return false;
+    		return placesOrudie.length < value.placesOrudie.length;
     }
 	
 	private boolean checkFreePlace(int index)
@@ -82,7 +78,6 @@ public class Doki<T extends ITransport, W extends IOrudie> {
 	            for (int i = 0; i < places.length  ; i++) {
 	            	g.drawLine(0, i * placeSizeHeight + 100 + i, placeSizeWidth, i * placeSizeHeight + 100 + i);
 	            }
-	            
 	    }
 	 
 	 public void draw(Graphics g)
