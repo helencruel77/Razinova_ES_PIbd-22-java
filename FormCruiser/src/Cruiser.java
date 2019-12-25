@@ -5,25 +5,24 @@ import java.util.Random;
 import java.util.Set;
 
 public class Cruiser extends Warship{
+	private Guns direction;
     private boolean Rocket;
     private boolean Flag;
+    public Color DopColor;
     private IOrudie orudie;
-    public Cruiser(int maxSpeed, float weight, Color mainColor, Color dopColor,
+    public Cruiser(int maxSpeed, float weight, Color mainColor, Color dopColor, IOrudie orudie,
     		boolean rocket, boolean flag)
     {
-    	super(maxSpeed, weight, mainColor);
+    	super(maxSpeed, weight, mainColor, orudie);
         Rocket = rocket;
         Flag = flag;
         DopColor = dopColor;
     }
    
-    public void SetPosition(int x, int y, int width, int height)
-    {
-        _startPosX = x;
-        _startPosY = y;
-        _pictureWidth = width;
-        _pictureHeight = height;
-    }
+    public void setOrudie(IOrudie orudie) {
+    	orudie = orudie;
+		
+	}
     
 	public void DrawWarship(Graphics g) {
 		
@@ -47,6 +46,10 @@ public class Cruiser extends Warship{
 		    g.setColor(Color.red);
 		    g.fillRect(_startPosX + 35, _startPosY + 39, 18, 3);
 		}
+	}
+	
+	public void setDopColor(Color DopColor) {
+		this.DopColor = DopColor;
 	}
 }
 
