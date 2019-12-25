@@ -3,12 +3,28 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class DvaTower  implements IOrudie{
-	public void KolOrudie(Guns direction, Graphics g, Color mainColor, Color dopColor) {
+	private int positionX;
+	private int positionY;
+	
+	public void SetPosition(int positionX, int positionY) {
+		this.positionX = positionX;
+		this.positionY = positionY;
+	}
+	@Override
+	public int PositionX() {
+		return positionX;
+	}
+	@Override
+	public int PositionY() {
+		return positionY;
+	}
+	@Override
+	public void KolOrudie(Graphics g, int positionX, int positionY, Color mainColor) {
 		g.setColor(Color.red);
-		g.fillRect(Cruiser._startPosX + 65, Cruiser._startPosY + 7, 13, 3);
+		g.fillRect(positionX + 65, positionY + 7, 13, 3);
 		g.setColor(Color.GRAY);
-	    g.fillOval(Cruiser._startPosX + 53, Cruiser._startPosY+4, 13, 12);
-		g.setColor(Warship.MainColor);
-	    g.fillOval(Cruiser._startPosX + 50, Cruiser._startPosY + 10, 19, 13);
+	    g.fillOval(positionX + 53, positionY + 4, 13, 12);
+		g.setColor(mainColor);
+	    g.fillOval(positionX + 50, positionY + 10, 19, 13);
 	}
 }

@@ -5,11 +5,11 @@ import java.awt.Graphics;
 public class Warship extends Vehicle  {
 	protected int warshipWidth = 100;
 	protected int warshipHeight = 60;
-	public Warship(int MaxSpeed, float weight, Color mainColor)
+	public Warship(int maxSpeed, float weight, Color mainColor)
 	{
-		this.setMaxSpeed(MaxSpeed);
-    	this.setWeight(weight);
-    	this.setMainColor(mainColor);
+		this.MaxSpeed = maxSpeed;
+		this.Weight = weight;
+		this.MainColor = mainColor;
 	}
 	@Override
 	public void DrawWarship(Graphics g) {
@@ -50,4 +50,5 @@ public class Warship extends Vehicle  {
 			break;
 		}
 	}
+
 }
