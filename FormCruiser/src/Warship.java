@@ -5,21 +5,12 @@ import java.awt.Graphics;
 public class Warship extends Vehicle  {
 	protected int warshipWidth = 100;
 	protected int warshipHeight = 60;
-	
-	protected IOrudie orudie;
-	
-	public Warship(int maxSpeed, float weight, Color mainColor, IOrudie orudie)
+	public Warship(int maxSpeed, float weight, Color mainColor)
 	{
 		this.MaxSpeed = maxSpeed;
 		this.Weight = weight;
 		this.MainColor = mainColor;
-		this.orudie = orudie;
 	}
-	
-	public void setGuns(IOrudie orudie) {
-		this.orudie = orudie;
-	}
-	
 	@Override
 	public void DrawWarship(Graphics g) {
 		g.setColor(MainColor);
@@ -27,7 +18,6 @@ public class Warship extends Vehicle  {
 		g.setColor(Color.gray);
 		g.fillRect(_startPosX + 30, _startPosY, 15, 20);
 		g.fillRect(_startPosX + 20, _startPosY + 20, 55, 10);
-		orudie.KolOrudie(g, _startPosX, _startPosY, MainColor);
 	}
 	@Override
 	public void MoveTransport(Direction direction) {
@@ -60,4 +50,5 @@ public class Warship extends Vehicle  {
 			break;
 		}
 	}
+
 }

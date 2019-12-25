@@ -8,23 +8,27 @@ public class Cruiser extends Warship{
 	private Guns direction;
     private boolean Rocket;
     private boolean Flag;
-    public Color DopColor;
     private IOrudie orudie;
-    public Cruiser(int maxSpeed, float weight, Color mainColor, Color dopColor, IOrudie orudie,
+    public Cruiser(int maxSpeed, float weight, Color mainColor, Color dopColor,
     		boolean rocket, boolean flag)
     {
-    	super(maxSpeed, weight, mainColor, orudie);
+    	super(maxSpeed, weight, mainColor);
         Rocket = rocket;
         Flag = flag;
         DopColor = dopColor;
     }
    
-    public void setOrudie(IOrudie orudie) {
-    	orudie = orudie;
-		
-	}
+    public void SetPosition(int x, int y, int width, int height)
+    {
+        _startPosX = x;
+        _startPosY = y;
+        _pictureWidth = width;
+        _pictureHeight = height;
+    }
+    
     
 	public void DrawWarship(Graphics g) {
+		
 		
 		super.DrawWarship(g);
 	    if (Rocket)
@@ -46,10 +50,6 @@ public class Cruiser extends Warship{
 		    g.setColor(Color.red);
 		    g.fillRect(_startPosX + 35, _startPosY + 39, 18, 3);
 		}
-	}
-	
-	public void setDopColor(Color DopColor) {
-		this.DopColor = DopColor;
 	}
 }
 

@@ -103,6 +103,4 @@ public class Doki<T extends ITransport, W extends IOrudie> {
 				}
 			}        
 		}
-	
-	 
 }

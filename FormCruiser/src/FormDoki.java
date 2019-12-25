@@ -5,7 +5,6 @@ import java.awt.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JButton;
@@ -18,7 +17,6 @@ import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 
 public class FormDoki {
 
@@ -34,7 +32,6 @@ public class FormDoki {
 	private JTextField textField;
 	private JList<String> list;
 	int index = 0;
-	private JButton buttonCreate;
 	/**
 	 * Launch the application.
 	 */
@@ -66,7 +63,72 @@ public class FormDoki {
 		frame.setBounds(100, 100, 900, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		doki = new MultiLevelDoki(countLevels, panelDokiWidth, panelDokiHeight);
+		
+		
+		
+		JButton buttonWarship = new JButton("\u0412\u043E\u0435\u043D\u043D\u044B\u0439 \u043A\u043E\u0440\u0430\u0431\u043B\u044C");
+		buttonWarship.setBounds(692, 11, 182, 20);
+		buttonWarship.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Color newColor = JColorChooser.showDialog(frame, null, Color.blue);
+				if (newColor != null) {
+					Random rnd = new Random();
+					warship = new Warship(rnd.nextInt(30)+20, rnd.nextInt(60)+140, newColor);	
+					switch (rnd.nextInt(4) + 1) {
+					case 1:
+						orudie = new DvaCircle();
+						break;
+					case 2:
+						orudie = new DvaTower();
+						break;
+					case 3:
+						orudie = new TriCircle();
+						break;
+					case 4:
+						orudie = new TriTower();
+						break;
+					} 
+					int place = doki.getDoki(list.getSelectedIndex()).plus(warship, orudie);
+					paneldoki.repaint();
+				
+				}
+				
+			}
+		});
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().add(buttonWarship);
+		
+		JButton buttonCruiser = new JButton("\u041A\u0440\u0435\u0439\u0441\u0435\u0440");
+		buttonCruiser.setBounds(692, 34, 182, 20);
+		buttonCruiser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Color mainColor = JColorChooser.showDialog(frame, null, Color.blue);
+				if (mainColor != null) {
+					Color dopColor = JColorChooser.showDialog(frame, null, Color.blue);
+					if (dopColor != null) {
+						Random rnd = new Random();
+						warship = new Cruiser(100, 1000,mainColor, dopColor, true, true);
+						switch (rnd.nextInt(4) + 1) {
+						case 1:
+							orudie = new DvaCircle();
+							break;
+						case 2:
+							orudie = new DvaTower();
+							break;
+						case 3:
+							orudie = new TriCircle();
+							break;
+						case 4:
+							orudie = new TriTower();
+							break;
+						}
+						int place = doki.getDoki(list.getSelectedIndex()).plus(warship, orudie);
+						paneldoki.repaint();
+					}
+				}
+			}
+		});
+		frame.getContentPane().add(buttonCruiser);
 		
 		
 		
@@ -85,7 +147,7 @@ public class FormDoki {
 		}
 		list = new JList(levels);
 		list.setSelectedIndex(0);
-		list.setBounds(726, 11, 125, 114);
+		list.setBounds(700, 65, 125, 114);
 		list.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
@@ -104,10 +166,9 @@ public class FormDoki {
 			
 					if (transport != null) {
 						panelTake.clear();
-						transport.SetPosition(panelTake.getWidth() / 2 - 40 , panelTake.getHeight() / 2 - 20, panelTake.getWidth(),
-								panelTake.getHeight());
-						panelTake.Set(transport);
+						panelTake.drawWarship(warship, orudie);
 						
+						panelTake.warship.SetPosition(30, 90, panelDokiWidth, panelDokiHeight);
 						paneldoki.repaint();
 						panelTake.repaint();
 					}
@@ -118,6 +179,7 @@ public class FormDoki {
 		frame.getContentPane().add(buttonTake);
 		
 		
+		
 		paneldoki = new PanelDoki(doki.getDoki(0));
 		paneldoki.setBounds(10, 11, 672, 439);
 		frame.getContentPane().add(paneldoki);
@@ -125,27 +187,6 @@ public class FormDoki {
 		panelTake = new TakePanel();
 		panelTake.setBounds(692, 253, 182, 197);
 		frame.getContentPane().add(panelTake);
-		panelTake.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		
-		buttonCreate = new JButton("\u0417\u0430\u043A\u0430\u0437\u0430\u0442\u044C");
-		buttonCreate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FormCruiserConfig config = new FormCruiserConfig(new WarshipDelegate() {
-					@Override
-					public void Invoke(ITransport transport) {
-						if (transport != null && list.getSelectedIndex() > -1) {
-							int place = doki.getDoki(list.getSelectedIndex()).plus(transport);
-							if (place > -1)
-								paneldoki.repaint();
-							
-						}
-					}
-				});
-				config.getFrame().setVisible(true);
-			}
-		});
-		buttonCreate.setBounds(736, 136, 89, 23);
-		frame.getContentPane().add(buttonCreate);
 		
 	}
 }
