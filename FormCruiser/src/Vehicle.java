@@ -8,8 +8,6 @@ public abstract class Vehicle implements ITransport {
 	int _startPosY;
 	protected  int _pictureWidth;
 	protected int _pictureHeight;
-	private int locoWidth = 100;
-	private int locoHeight = 60;
 	public int MaxSpeed; {  Set get;}
 	public float Weight; { Set get;}
 	public Color MainColor;  
@@ -26,7 +24,10 @@ public abstract class Vehicle implements ITransport {
 	public Color DopColor() {
 		return DopColor;
 	}
-	
+	  public void SetColor(Color color)
+	    {
+		  MainColor = color;
+	    }
 	public void SetPosition(int x, int y, int width, int height)
     {
         _startPosX = x;
