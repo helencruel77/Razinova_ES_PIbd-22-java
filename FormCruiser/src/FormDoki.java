@@ -1,24 +1,17 @@
-import java.awt.Color;
+
 import java.awt.EventQueue;
-import java.awt.List;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
 
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 
 public class FormDoki {
 
@@ -27,8 +20,6 @@ public class FormDoki {
 	private final int panelDokiHeight = 460;
 	private final int countLevels = 5;
 	private MultiLevelDoki doki;
-	private ITransport warship;
-	private IOrudie orudie;
 	private TakePanel panelTake;
 	private PanelDoki paneldoki;
 	private JTextField textField;
@@ -116,7 +107,6 @@ public class FormDoki {
 		});
 		buttonTake.setBounds(740, 218, 89, 23);
 		frame.getContentPane().add(buttonTake);
-		
 		
 		paneldoki = new PanelDoki(doki.getDoki(0));
 		paneldoki.setBounds(10, 11, 672, 439);

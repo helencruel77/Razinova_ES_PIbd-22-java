@@ -20,7 +20,7 @@ public class FormCruiserConfig {
 	private JFrame frame;
 	private WarshipDelegate eventAddWarship;
 	private ITransport getWarship;
-	private ITransport curBus;
+	private ITransport curWarship;
 	private Color Color;
 	private PanelCruiser drawpanel;
 	private IOrudie orudie;
@@ -105,7 +105,7 @@ public class FormCruiserConfig {
 		buttonAdd.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		buttonAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				eventAddWarship.Invoke(curBus);
+				eventAddWarship.Invoke(curWarship);
 				frame.dispose();
 			}
 		});
@@ -124,8 +124,8 @@ public class FormCruiserConfig {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				if (getWarship != null) {
-					curBus = getWarship;
-					drawpanel.PanelCruiserSet(curBus);
+					curWarship = getWarship;
+					drawpanel.PanelCruiserSet(curWarship);
 					drawpanel.repaint();
 				}
 			}
@@ -265,8 +265,8 @@ public class FormCruiserConfig {
 		labelMainColor.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				if (Color != null && curBus != null) {
-					curBus.SetColor(Color);
+				if (Color != null && curWarship != null) {
+					curWarship.SetColor(Color);
 					drawpanel.repaint();
 				}
 			}
@@ -281,8 +281,8 @@ public class FormCruiserConfig {
 		labelDopColor.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				if (Color != null && curBus != null) {
-					((Cruiser)curBus).setDopColor(Color);
+				if (Color != null && curWarship != null) {
+					((Cruiser)curWarship).setDopColor(Color);
 					drawpanel.repaint();
 				}
 			}
@@ -297,8 +297,8 @@ public class FormCruiserConfig {
 		labelOrudie.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				if (curBus != null  ) {
-					((Warship)curBus).setGuns(orudie);
+				if (curWarship != null  ) {
+					((Warship)curWarship).setGuns(orudie);
 					drawpanel.repaint();
 				}
 			}
@@ -308,8 +308,6 @@ public class FormCruiserConfig {
 		labelOrudie.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		labelOrudie.setBounds(328, 312, 260, 54);
 		frame.getContentPane().add(labelOrudie);
-		
-		
 		
 		JLabel labelDvaCircle = new JLabel("DvaCircle");
 		labelDvaCircle.addMouseListener(new MouseAdapter() {
