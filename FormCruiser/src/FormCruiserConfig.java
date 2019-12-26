@@ -9,8 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
-
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
@@ -113,6 +111,11 @@ public class FormCruiserConfig {
 		frame.getContentPane().add(buttonAdd);
 		
 		JButton buttonCancel = new JButton("\u041E\u0442\u043C\u0435\u043D\u0430");
+		buttonCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+			}
+		});
 		buttonCancel.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		buttonCancel.setBounds(10, 396, 260, 54);
 		frame.getContentPane().add(buttonCancel);
@@ -309,7 +312,7 @@ public class FormCruiserConfig {
 		labelOrudie.setBounds(328, 312, 260, 54);
 		frame.getContentPane().add(labelOrudie);
 		
-		JLabel labelDvaCircle = new JLabel("DvaCircle");
+		JLabel labelDvaCircle = new JLabel("\u041E\u0434\u043D\u043E \u043E\u0432\u0430\u043B\u044C\u043D\u043E\u0435");
 		labelDvaCircle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -323,10 +326,10 @@ public class FormCruiserConfig {
 		labelDvaCircle.setHorizontalAlignment(SwingConstants.CENTER);
 		labelDvaCircle.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		labelDvaCircle.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		labelDvaCircle.setBounds(672, 257, 151, 34);
+		labelDvaCircle.setBounds(641, 257, 202, 34);
 		frame.getContentPane().add(labelDvaCircle);
 		
-		JLabel labelTriCircle = new JLabel("TriCircle");
+		JLabel labelTriCircle = new JLabel("\u0414\u0432\u0430 \u043E\u0432\u0430\u043B\u044C\u043D\u044B\u0445");
 		labelTriCircle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -340,10 +343,10 @@ public class FormCruiserConfig {
 		labelTriCircle.setHorizontalAlignment(SwingConstants.CENTER);
 		labelTriCircle.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		labelTriCircle.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		labelTriCircle.setBounds(672, 302, 149, 34);
+		labelTriCircle.setBounds(641, 302, 202, 34);
 		frame.getContentPane().add(labelTriCircle);
 		
-		JLabel labelDvaTower = new JLabel("DvaTower");
+		JLabel labelDvaTower = new JLabel("\u041E\u0434\u043D\u043E \u043A\u0440\u0443\u0433\u043B\u043E\u0435");
 		labelDvaTower.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -357,10 +360,10 @@ public class FormCruiserConfig {
 		labelDvaTower.setHorizontalAlignment(SwingConstants.CENTER);
 		labelDvaTower.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		labelDvaTower.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		labelDvaTower.setBounds(672, 347, 149, 34);
+		labelDvaTower.setBounds(641, 347, 202, 34);
 		frame.getContentPane().add(labelDvaTower);
 		
-		JLabel labelTriTower = new JLabel("TriTower");
+		JLabel labelTriTower = new JLabel("\u0414\u0432\u0430 \u043A\u0440\u0443\u0433\u043B\u044B\u0445");
 		labelTriTower.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -374,7 +377,7 @@ public class FormCruiserConfig {
 		labelTriTower.setHorizontalAlignment(SwingConstants.CENTER);
 		labelTriTower.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		labelTriTower.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		labelTriTower.setBounds(670, 392, 151, 34);
+		labelTriTower.setBounds(641, 396, 202, 34);
 		frame.getContentPane().add(labelTriTower);
 	}
 }
