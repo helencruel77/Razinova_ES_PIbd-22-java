@@ -1,5 +1,8 @@
 
 import java.awt.EventQueue;
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -9,9 +12,14 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class FormDoki {
 
@@ -58,7 +66,6 @@ public class FormDoki {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		doki = new MultiLevelDoki(countLevels, panelDokiWidth, panelDokiHeight);
 		frame.getContentPane().setLayout(null);
-		
 		
 		
 		textField = new JTextField();
@@ -109,7 +116,7 @@ public class FormDoki {
 		frame.getContentPane().add(buttonTake);
 		
 		paneldoki = new PanelDoki(doki.getDoki(0));
-		paneldoki.setBounds(10, 11, 672, 439);
+		paneldoki.setBounds(10, 35, 672, 415);
 		frame.getContentPane().add(paneldoki);
 		
 		panelTake = new TakePanel();
@@ -127,7 +134,6 @@ public class FormDoki {
 							int place = doki.getDoki(list.getSelectedIndex()).plus(transport);
 							if (place > -1)
 								paneldoki.repaint();
-							
 						}
 					}
 				});
@@ -137,5 +143,133 @@ public class FormDoki {
 		buttonCreate.setBounds(736, 136, 89, 23);
 		frame.getContentPane().add(buttonCreate);
 		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(10, 11, 99, 22);
+		frame.getContentPane().add(menuBar);
+		
+		JMenu menuSaveLoad = new JMenu("SaveLoad");
+		menuBar.add(menuSaveLoad);
+		
+		JMenuItem mntmSaveall = new JMenuItem("SaveAll");
+		mntmSaveall.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 try {
+					FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.SAVE);
+			        fileDialog.setVisible(true);
+			        if (fileDialog.getFile() != null)
+			        {
+		           
+						if (doki.Save(fileDialog.getDirectory() + fileDialog.getFile()))
+						{
+							JOptionPane.showMessageDialog(null,"ok");
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null,"not ok");
+						}
+			        }
+				 } catch (HeadlessException | IOException e1) {
+						e1.printStackTrace();
+					}
+		        }
+		});
+		menuSaveLoad.add(mntmSaveall);
+		
+		JMenuItem mntmLoadall = new JMenuItem("LoadAll");
+		mntmLoadall.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					LoadAll();
+				} catch (NumberFormatException | HeadlessException | IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+
+		menuSaveLoad.add(mntmLoadall);
+		
+		JMenuItem mntmSavelevel = new JMenuItem("SaveLevel");
+		mntmSavelevel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.SAVE);
+					fileDialog.setVisible(true);
+					if (fileDialog.getFile() != null)
+					{
+					    if (doki.SaveLevel(fileDialog.getDirectory() + fileDialog.getFile(), list.getSelectedIndex()))
+					    {
+							JOptionPane.showMessageDialog(null,"ok");
+					    }
+					    else
+					    {
+							JOptionPane.showMessageDialog(null,"not ok");
+					    }
+					}
+				} catch (NumberFormatException | HeadlessException | IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		menuSaveLoad.add(mntmSavelevel);
+		
+		JMenuItem mntmLoadlevel = new JMenuItem("LoadLevel");
+		mntmLoadlevel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					LoadLevel();
+				} catch (NumberFormatException | HeadlessException | IOException e1 ) {
+					e1.printStackTrace();
+				}
+				paneldoki.repaint();
+			}
+		});
+		menuSaveLoad.add(mntmLoadlevel);
 	}
+	
+	private void LoadAll() throws HeadlessException, IOException {
+		FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.LOAD);
+        fileDialog.setVisible(true);
+        if (fileDialog.getFile() != null)
+        {
+            try {
+				if (doki.Load(fileDialog.getDirectory() + fileDialog.getFile()))
+				{
+					JOptionPane.showMessageDialog(null,"ok");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"not ok");
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+            paneldoki.setDoki(doki.getDoki(list.getSelectedIndex()));
+            paneldoki.repaint();
+        }
+    }
+	
+	private void LoadLevel() throws HeadlessException, IOException {
+		FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.LOAD);
+		fileDialog.setVisible(true);
+	    if (fileDialog.getFile() != null)
+	    {
+	        try {
+				if (doki.LoadLvl(fileDialog.getDirectory() + fileDialog.getFile(), list.getSelectedIndex()))
+				{
+					JOptionPane.showMessageDialog(null,"ok");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"not ok");
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+	        
+	    }
+    }
 }

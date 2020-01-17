@@ -64,7 +64,7 @@ public class FormCruiserConfig {
 		WarshipLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				getWarship =new Warship(100, 1000, Color.BLACK, new DvaCircle());
+				getWarship =new Warship(100, 1000, Color.BLACK, new DvaCircle(), Guns.One);
 				getWarship.SetPosition(drawpanel.getWidth() / 3 , drawpanel.getHeight() / 3, drawpanel.getWidth(), drawpanel.getHeight());
 				}
 
@@ -83,7 +83,7 @@ public class FormCruiserConfig {
 		CruiserLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				getWarship = new Cruiser(100, 1000, Color.BLACK, Color.DARK_GRAY, new DvaCircle(), true, true);
+				getWarship = new Cruiser(100, 1000, Color.BLACK, new DvaCircle(), Guns.One, Color.DARK_GRAY, true, true);
 				getWarship.SetPosition(drawpanel.getWidth() / 3 , drawpanel.getHeight() / 3, drawpanel.getWidth(), drawpanel.getHeight());
 			
 			}
