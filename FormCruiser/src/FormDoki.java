@@ -80,7 +80,7 @@ public class FormDoki {
 		
 		String[] levels = new String[countLevels];
 		for(int i = 0; i < countLevels; i++) {
-			levels[i] = "Óðîâåíü" + (i + 1);
+			levels[i] = "Ã“Ã°Ã®Ã¢Ã¥Ã­Ã¼" + (i + 1);
 		}
 		list = new JList(levels);
 		list.setSelectedIndex(0);
@@ -137,12 +137,14 @@ public class FormDoki {
 								paneldoki.repaint();
 						}
 					}
+					
 				});
 				config.getFrame().setVisible(true);
 			}
 		});
 		buttonCreate.setBounds(736, 136, 89, 23);
 		frame.getContentPane().add(buttonCreate);
+
 		
 		JMenuBar menuBar = new JMenuBar();
 		
@@ -280,4 +282,7 @@ public class FormDoki {
 	        
 	    }
     }
+
+
+
 }
