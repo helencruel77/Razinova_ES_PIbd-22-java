@@ -42,4 +42,8 @@ public class TriTower implements IOrudie {
 	    g.fillOval(positionX + 78, positionY + 22, 15, 15);
 	    
 	}
+	@Override
+	public String toString() {
+		return this.getClass().getName();
+	}
 }

@@ -34,6 +34,7 @@ public class FormDoki {
 	private JList<String> list;
 	int index = 0;
 	private JButton buttonCreate;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -79,7 +80,7 @@ public class FormDoki {
 		
 		String[] levels = new String[countLevels];
 		for(int i = 0; i < countLevels; i++) {
-			levels[i] = "Óðîâåíü" + (i + 1);
+			levels[i] = "Ã“Ã°Ã®Ã¢Ã¥Ã­Ã¼" + (i + 1);
 		}
 		list = new JList(levels);
 		list.setSelectedIndex(0);
@@ -143,5 +144,145 @@ public class FormDoki {
 		});
 		buttonCreate.setBounds(736, 136, 89, 23);
 		frame.getContentPane().add(buttonCreate);
+
+		
+		JMenuBar menuBar = new JMenuBar();
+		
+		menuBar.setBounds(10, 11, 99, 22);
+		frame.getContentPane().add(menuBar);
+		
+		JMenu menuSaveLoad = new JMenu("SaveLoad");
+		
+		menuBar.add(menuSaveLoad);
+		
+		JMenuItem mntmSaveall = new JMenuItem("SaveAll");
+		mntmSaveall.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 try {
+					 
+					FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.SAVE);
+			        fileDialog.setVisible(true);
+			        if (fileDialog.getFile() != null)
+			        {
+		           
+						if (doki.Save(fileDialog.getDirectory() + fileDialog.getFile()))
+						{
+							JOptionPane.showMessageDialog(null,"ok");
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null,"not ok");
+						}
+			        }
+				 } catch (HeadlessException | IOException e1) {
+						e1.printStackTrace();
+					}
+		        }
+		});
+		menuSaveLoad.add(mntmSaveall);
+		
+		JMenuItem mntmLoadall = new JMenuItem("LoadAll");
+		mntmLoadall.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					LoadAll();
+				} catch (NumberFormatException | HeadlessException | IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+
+		menuSaveLoad.add(mntmLoadall);
+		
+		JMenuItem mntmSavelevel = new JMenuItem("SaveLevel");
+		mntmSavelevel.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.SAVE);
+					fileDialog.setVisible(true);
+					if (fileDialog.getFile() != null)
+					{
+					    if (doki.SaveLevel(fileDialog.getDirectory() + fileDialog.getFile(), list.getSelectedIndex()))
+					    {
+							JOptionPane.showMessageDialog(null,"ok");
+					    }
+					    else
+					    {
+							JOptionPane.showMessageDialog(null,"not ok");
+					    }
+					}
+				} catch (NumberFormatException | HeadlessException | IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		menuSaveLoad.add(mntmSavelevel);
+		
+		JMenuItem mntmLoadlevel = new JMenuItem("LoadLevel");
+		mntmLoadlevel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					LoadLevel();
+				} catch (NumberFormatException | HeadlessException | IOException e1 ) {
+					e1.printStackTrace();
+				}
+				paneldoki.repaint();
+			}
+		});
+		menuSaveLoad.add(mntmLoadlevel);
 	}
+	
+	private void LoadAll() throws HeadlessException, IOException {
+		
+		FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.LOAD);
+        fileDialog.setVisible(true);
+        if (fileDialog.getFile() != null)
+        {
+            try {
+				if (doki.Load(fileDialog.getDirectory() + fileDialog.getFile()))
+				{
+					JOptionPane.showMessageDialog(null,"ok");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"not ok");
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+            paneldoki.setDoki(doki.getDoki(list.getSelectedIndex()));
+            paneldoki.repaint();
+        }
+    }
+	
+	private void LoadLevel() throws HeadlessException, IOException {
+		
+		FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.LOAD);
+		fileDialog.setVisible(true);
+	    if (fileDialog.getFile() != null)
+	    {
+	        try {
+				if (doki.LoadLvl(fileDialog.getDirectory() + fileDialog.getFile(), list.getSelectedIndex()))
+				{
+					JOptionPane.showMessageDialog(null,"ok");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"not ok");
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+	        
+	    }
+    }
+
+
+
 }

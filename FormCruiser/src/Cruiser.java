@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class Cruiser extends Warship{
+	
     private boolean Rocket;
     private boolean Flag;
     public Color DopColor;

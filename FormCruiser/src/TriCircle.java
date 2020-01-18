@@ -37,5 +37,9 @@ public class TriCircle  implements IOrudie{
 	    g.fillRect(positionX + 80, positionY + 23, 12, 7);
 	    g.fillOval(positionX + 79, positionY+18, 13, 12);
 	}
+	@Override
+	public String toString() {
+		return this.getClass().getName();
+	}
 	
 }
