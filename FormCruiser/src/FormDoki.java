@@ -136,6 +136,7 @@ public class FormDoki {
 								paneldoki.repaint();
 						}
 					}
+					
 				});
 				config.getFrame().setVisible(true);
 			}
