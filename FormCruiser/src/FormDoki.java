@@ -145,10 +145,12 @@ public class FormDoki {
 		frame.getContentPane().add(buttonCreate);
 		
 		JMenuBar menuBar = new JMenuBar();
+		
 		menuBar.setBounds(10, 11, 99, 22);
 		frame.getContentPane().add(menuBar);
 		
 		JMenu menuSaveLoad = new JMenu("SaveLoad");
+		
 		menuBar.add(menuSaveLoad);
 		
 		JMenuItem mntmSaveall = new JMenuItem("SaveAll");
@@ -156,6 +158,7 @@ public class FormDoki {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				 try {
+					 
 					FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.SAVE);
 			        fileDialog.setVisible(true);
 			        if (fileDialog.getFile() != null)
@@ -179,6 +182,7 @@ public class FormDoki {
 		
 		JMenuItem mntmLoadall = new JMenuItem("LoadAll");
 		mntmLoadall.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -193,6 +197,7 @@ public class FormDoki {
 		
 		JMenuItem mntmSavelevel = new JMenuItem("SaveLevel");
 		mntmSavelevel.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -232,6 +237,7 @@ public class FormDoki {
 	}
 	
 	private void LoadAll() throws HeadlessException, IOException {
+		
 		FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.LOAD);
         fileDialog.setVisible(true);
         if (fileDialog.getFile() != null)
@@ -254,6 +260,7 @@ public class FormDoki {
     }
 	
 	private void LoadLevel() throws HeadlessException, IOException {
+		
 		FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.LOAD);
 		fileDialog.setVisible(true);
 	    if (fileDialog.getFile() != null)

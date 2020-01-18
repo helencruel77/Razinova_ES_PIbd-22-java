@@ -39,6 +39,7 @@ public class MultiLevelDoki {
 	 public boolean Save(String filename) throws IOException
 	    {
 	    	File file = new File(filename);
+	    	
 	        if (file.exists())
 	        {
 	            file.delete();
@@ -73,6 +74,7 @@ public class MultiLevelDoki {
 	    }
 	public boolean Load(String string) throws NumberFormatException, IOException {
 		File file = new File(string);
+		
         if (!file.exists())
         {
             return false;
@@ -128,6 +130,7 @@ public class MultiLevelDoki {
     {
     	if (lvl > parkingStages.size() || lvl < 0)
     		return false;
+    	
     	File file = new File(filename);
         if (file.exists())
         {
@@ -163,6 +166,7 @@ public class MultiLevelDoki {
 	    	if (lvl > parkingStages.size() || lvl < 0)
 	    		return false;
 	    	File file = new File(filename);
+	    	
 	        if (!file.exists())
 	        {
 	            return false;
