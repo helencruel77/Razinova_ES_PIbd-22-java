@@ -31,4 +31,8 @@ public class DvaTower  implements IOrudie{
 		g.setColor(mainColor);
 	    g.fillOval(positionX + 50, positionY + 10, 19, 13);
 	}
+	@Override
+	public String toString() {
+		return this.getClass().getName();
+	}
 }

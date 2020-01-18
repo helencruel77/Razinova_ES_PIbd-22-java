@@ -34,6 +34,7 @@ public class FormDoki {
 	private JList<String> list;
 	int index = 0;
 	private JButton buttonCreate;
+	
 	/**
 	 * Launch the application.
 	 */

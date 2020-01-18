@@ -66,6 +66,9 @@ public class MultiLevelDoki {
 			        }
 			    }
 	        }
+	        catch (Exception e) {
+	        	return false;
+			}
 	        return true;
 	    }
 	public boolean Load(String string) throws NumberFormatException, IOException {
@@ -116,6 +119,9 @@ public class MultiLevelDoki {
                 parkingStages.get(counter).setPlace(Integer.parseInt(line.split(":")[0]), warship);
             }
         }
+        catch (Exception e) {
+        	return false;
+		}
         return true;
     }
 	 public boolean SaveLevel(String filename, int lvl) throws IOException

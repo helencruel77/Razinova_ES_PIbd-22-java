@@ -5,7 +5,6 @@ import java.awt.Graphics;
 public class Warship extends Vehicle  {
 	protected int warshipWidth = 100;
 	protected int warshipHeight = 60;
-	
 	protected IOrudie orudie;
 	protected Guns gun;
 	

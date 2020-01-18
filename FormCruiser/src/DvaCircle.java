@@ -31,4 +31,8 @@ public class DvaCircle implements IOrudie {
 	    g.fillRect(positionX + 55, positionY + 14, 12, 7);
 	    g.fillOval(positionX + 54, positionY + 7, 13, 12);
 	}
+	@Override
+	public String toString() {
+		return this.getClass().getName();
+	}
 }
