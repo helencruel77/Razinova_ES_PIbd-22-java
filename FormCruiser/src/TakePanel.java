@@ -6,6 +6,10 @@ public class TakePanel  extends JPanel {
 	public ITransport warship;
 	public IOrudie orudie;
 	
+	public void Set(ITransport transport) {
+		this.warship = transport;
+	}
+	
 	public void drawWarship(ITransport transport, IOrudie wagon ) {
 		this.warship = transport;
 		this.orudie = wagon;

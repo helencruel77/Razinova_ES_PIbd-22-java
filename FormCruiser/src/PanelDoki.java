@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 public class PanelDoki extends JPanel {
 	private Doki<ITransport, IOrudie> doki;
 	
-	
 	public PanelDoki(Doki<ITransport, IOrudie> doki) {
 		this.doki = doki;
 	}

@@ -6,7 +6,7 @@ public interface ITransport {
 	void MoveTransport(Direction direction);
 	void DrawWarship(Graphics g);
 	Color MainColor();
-	Color DopColor();
 	int StartPosX();
 	int StartPosY();
+	void SetColor(Color color);
 }

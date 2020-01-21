@@ -1,7 +1,15 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MultiLevelDoki {
 	ArrayList<Doki<ITransport, IOrudie>> parkingStages;
+	private int pictureWidth;
+    private int pictureHeight;
+	
 	private int countPlaces = 5;
 	 public MultiLevelDoki(int countStages, int pictureWidth, int pictureHeight)
      {
@@ -28,4 +36,5 @@ public class MultiLevelDoki {
 			}
 			return null;
 		}
+
 }

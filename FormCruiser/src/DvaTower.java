@@ -19,6 +19,10 @@ public class DvaTower  implements IOrudie{
 		return positionY;
 	}
 	@Override
+	public String toString() {
+		return this.getClass().getName();
+	}
+	@Override
 	public void KolOrudie(Graphics g, int positionX, int positionY, Color mainColor) {
 		g.setColor(Color.red);
 		g.fillRect(positionX + 65, positionY + 7, 13, 3);

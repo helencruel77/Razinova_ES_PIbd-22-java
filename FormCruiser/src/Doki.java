@@ -42,7 +42,7 @@ public class Doki<T extends ITransport, W extends IOrudie> {
             if (checkFreePlace(i))
             {
                 places.put(i, warship);
-                places.get(i).SetPosition(5 + i / 5 * placeSizeWidth + 5, i % 5 * placeSizeHeight + 15, 
+                places.get(i).SetPosition(5 + i / 5 * placeSizeWidth + 20, i % 5 * placeSizeHeight + 30, 
                 		pictureWidth, pictureHeight);
                 return i;
             }
@@ -103,4 +103,18 @@ public class Doki<T extends ITransport, W extends IOrudie> {
 				}
 			}        
 		}
+	 
+	 public T getPlace(int i) {
+    	 if (places.containsKey(i)){
+		return places.get(i);}
+    	 else return null;
+	}
+	 public void setPlace(int ind, T value) {
+			if (checkFreePlace(ind))
+	        {
+				places.put(ind, value);
+                places.get(ind).SetPosition(5 + ind / 5 * placeSizeWidth + 20, ind % 5 * placeSizeHeight + 30, 
+                		pictureWidth, pictureHeight);
+	        }
+		} 
 }
